@@ -1,1 +1,11 @@
-
+spring:
+  application:
+    name: dbconnection
+  cloud:
+    consul:
+      host: 127.0.0.1
+      discovery:
+        prefer-ip-address: true
+        instanceId: ${spring.application.name}-service:${spring.application.instance_id:${random.value}}
+server:
+  port: 8081

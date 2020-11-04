@@ -1,9 +1,7 @@
 package com.dbspaceproject.dbconnection.repository;
 
-import com.dbspaceproject.dbconnection.model.Dbconnection;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.stereotype.Repository;
+import com.dbspaceproject.dbconnection.models.DbconnectionModel;
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 
-@Repository
-public interface DbconnectionRepository extends MongoRepository<Dbconnection, String> {
+public interface DbconnectionRepository extends ReactiveMongoRepository<DbconnectionModel, String> {
 }
