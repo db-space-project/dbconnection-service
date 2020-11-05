@@ -12,7 +12,7 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 
 
 @Configuration
-public class DbconnectionRouter {
+public class DbconnectionRouterConfiguration {
 
     @Bean
     public RouterFunction<ServerResponse> organizationRoute(DbconnectionHandler dbconnectionHandler) {

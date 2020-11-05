@@ -12,3 +12,7 @@ spring:
         instanceId: ${spring.application.name}-service:${spring.application.instance_id:${random.value}}
 server:
   port: 8081
+
+logging:
+  level:
+    reactor.netty.http.client.HttpClient: DEBUG
