@@ -14,13 +14,17 @@ import static org.springframework.security.web.server.util.matcher.ServerWebExch
 @EnableWebFluxSecurity
 @EnableReactiveMethodSecurity
 public class Config {
+    public static final String API_MATCHER_PATH = "/dbconnection/**";
 
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
-        http.authorizeExchange().anyExchange().authenticated()
+        final ServerWebExchangeMatcher apiPathMatcher = pathMatchers(API_MATCHER_PATH);
+
+        http.authorizeExchange().matchers(apiPathMatcher).authenticated()
                 .and().httpBasic().disable()
                 .csrf().disable()
-                .logout().disable();
+                .logout().disable()
+                .oauth2ResourceServer().jwt().jwkSetUri("http://localhost:8080/auth/realms/db-space-project/protocol/openid-connect/certs");
 
         return http.build();
     }
